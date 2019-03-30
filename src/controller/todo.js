@@ -23,8 +23,7 @@ exports.findById = async (req, res) => {
 
 exports.create = async (req, res) => {
   const todo = {
-    title: req.body.title,
-    body: req.body.body
+    title: req.body.title
   }
 
   try {
@@ -51,10 +50,10 @@ exports.update = async (req, res) => {
     let todo = {
       _id: req.params.id,
       title: req.body.title,
-      body: req.body.body
+      done: req.body.done
     }
 
-    await Todo.updateOne({ _id: todo._id }, { title: todo.title, body: todo.body })
+    await Todo.updateOne({ _id: todo._id }, { title: todo.title, done: todo.done })
     
     res.status(204).end()
   } catch (err) {

@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const config = require('./config')
+const cors = require('cors')
 
 const app = express()
 
@@ -10,8 +11,10 @@ mongoose.connection.on('error', e => console.error(e))
 
 require('./model/Todo')
 
+//Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 const todoRouter = require('./routes/todo')
 
